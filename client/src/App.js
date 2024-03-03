@@ -4,8 +4,11 @@ import "react-icons/bi";
 import "react-icons/md";
 import "react-icons/bs";
 import "react-router-dom";
+import './App.css'
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+
+import {background} from './assets/community.jpg'
 
 import {
   BrowserRouter,
@@ -13,7 +16,7 @@ import {
   Routes,
   useParams,
   useSearchParams,
-} from "react-router-dom";
+} from "react-router-dom"; 
 import theme from "./theme";
 
 import PostView from "./components/views/PostView";
@@ -34,7 +37,8 @@ function App() {
   initiateSocketConnection();
 
   return (
-    <ThemeProvider theme={theme}>
+    <div className="background">
+           <ThemeProvider theme={theme}>
       <BrowserRouter>
         <CssBaseline />
         <Routes>
@@ -63,6 +67,8 @@ function App() {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
+    </div>
+   
   );
 }
 

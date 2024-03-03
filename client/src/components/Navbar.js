@@ -120,7 +120,7 @@ const Navbar = () => {
           onChange={handleChange}
           value={search}
           style={{
-              border: "1px solid blue",
+              background: "white",
               borderRadius: "5px",
           }}
         />
