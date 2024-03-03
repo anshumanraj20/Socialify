@@ -14,7 +14,7 @@ const Sidebar = () => {
     <Stack spacing={2}>
       <TopPosts />
       <FindUsers />
-      <Footer />
+      {/* <Footer /> */}
     </Stack>
   );
 };
