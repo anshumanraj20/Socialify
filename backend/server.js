@@ -17,20 +17,32 @@ dotenv.config();
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
   cors: {
-    origin: ["http://localhost:3000", "https://socialify-ch3i.onrender.com/"],
+    origin: ["http://localhost:3000", "https://socialify-one.vercel.app/"],
   },
 });
 
 io.use(authSocket);
 io.on("connection", (socket) => socketServer(socket));
 
-mongoose.connect(
-  process.env.MONGO_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => {
-    console.log("MongoDB connected");
-  }
-);
+
+const connectionParams = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+};
+const mongoURI = process.env.MONGO_URI;
+
+const connectToDatabse = async () =>{
+try{
+    await mongoose.connect(mongoURI,connectionParams);
+    console.log("database connected succesfully");
+}
+catch(err){
+    console.log("database connection error",err);
+}
+
+};
+connectToDatabse();
+
 
 httpServer.listen(process.env.PORT || 4000, () => {
   console.log("Listening");
